@@ -36,9 +36,6 @@ def encrypt(plaintext: str):
 
     # 加密
     cipherList = [chr(unicode + int(secretKey)) for unicode in plainUnicode]
-    ciphertext = digitKey + codebookKey + "/".join(cipherList)
+    ciphertext = digitKey + codebookKey + "".join(cipherList)
 
     return ciphertext
-
-
-print(encrypt("Hello!你好！"))

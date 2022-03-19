@@ -25,7 +25,7 @@ digits = {
 def decrypt(ciphertext):
 
     # 获取 Unicode 列表
-    cipherUnicode = [ord(character) for character in ciphertext[2:].split("/")]
+    cipherUnicode = [ord(character) for character in ciphertext[2:]]
 
     # 获取密码本、密钥
     codebookKey = ciphertext[1]
@@ -37,6 +37,3 @@ def decrypt(ciphertext):
     plaintext = "".join(plainList)
 
     return plaintext
-
-
-print(decrypt("DtM/j/q/q/t/&/佥/如/＆"))
