@@ -27,7 +27,7 @@ digits = {
 def encrypt(plaintext: str):
 
     # 获取 Unicode 列表
-    plainUnicodeLst = [ord(character) for character in plaintext]
+    plainUnicode = [ord(character) for character in plaintext]
 
     # 选取密码本、密钥
     codebookKey = choice(list(codebooks.keys()))
@@ -35,8 +35,8 @@ def encrypt(plaintext: str):
     secretKey = codebooks[codebookKey][digits[digitKey]]
 
     # 加密
-    cipherUnicodeList = [chr(unicode + int(secretKey)) for unicode in plainUnicodeLst]
-    ciphertext = codebookKey + digitKey + "/".join(cipherUnicodeList)
+    cipherList = [chr(unicode + int(secretKey)) for unicode in plainUnicode]
+    ciphertext = digitKey + codebookKey + "/".join(cipherList)
 
     return ciphertext
 
