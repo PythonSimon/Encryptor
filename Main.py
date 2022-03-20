@@ -1,4 +1,23 @@
 # coding=utf-8
 
-from Service.Decryptor import decrypt
-from Service.Encryptor import encrypt
+from wx import *
+
+from Controller.Login import LoginFrame
+
+
+class MyApp(App):
+
+    def OnInit(self):
+        frame = LoginFrame()
+        frame.Show()
+
+        return True
+
+    def OnExit(self):
+        return 0
+
+
+if __name__ == "__main__":
+    app = MyApp()
+
+    app.MainLoop()
