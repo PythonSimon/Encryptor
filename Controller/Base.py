@@ -5,10 +5,10 @@ import sys
 from wx import *
 
 
-class Base(Frame):
+class BaseFrame(Frame):
 
     def __init__(self, size, title, closingWarning="确认关闭？", kind="default", panels=None, background_color="GREY"):
-        super(Base, self).__init__(parent=None, title=title, size=size, style=DEFAULT_FRAME_STYLE ^ MAXIMIZE_BOX)
+        super(BaseFrame, self).__init__(parent=None, title=title, size=size, style=DEFAULT_FRAME_STYLE ^ MAXIMIZE_BOX)
 
         self.closingWarning = closingWarning
         self.warning = True
