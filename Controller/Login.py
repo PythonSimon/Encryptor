@@ -3,6 +3,10 @@
 from wx import *
 
 from Base import BaseFrame
+from Service.Login import checkName
+
+CANCEL = 0
+ENTER = 1
 
 
 class LoginFrame(BaseFrame):
@@ -15,6 +19,8 @@ class LoginFrame(BaseFrame):
         self.main()
 
     def main(self):
+        global nameCtrl, passwordCtrl
+
         defaultFont = Font(15, SCRIPT, NORMAL, NORMAL, False)
 
         sizer = FlexGridSizer(3, 2, 10, 10)
@@ -24,8 +30,8 @@ class LoginFrame(BaseFrame):
         passwordText = StaticText(self.panel, label="密码")
         passwordCtrl = TextCtrl(self.panel)
 
-        cancel = Button(self.panel, label="取消")
-        enter = Button(self.panel, label="进入")
+        cancel = Button(self.panel, id=CANCEL, label="取消")
+        enter = Button(self.panel, id=ENTER, label="进入")
 
         nameText.SetFont(defaultFont)
         nameCtrl.SetFont(defaultFont)
@@ -48,4 +54,11 @@ class LoginFrame(BaseFrame):
         sizer.Add(enter, 0, flag=FIXED_MINSIZE | ALIGN_CENTER, border=10)
 
         self.panel.SetSizer(sizer)
+
+        self.Bind(EVT_BUTTON, handler=self.close, id=CANCEL)
+        self.Bind(EVT_BUTTON, handler=self.enter, id=ENTER)
+
         self.panel.Layout()
+
+    def enter(self, event):
+        pass
