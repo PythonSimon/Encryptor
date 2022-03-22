@@ -19,13 +19,13 @@ class BaseFrame(Frame):
             self.splitter = SplitterWindow(self, style=SP_3DSASH)
             self.leftPanel = Panel(self.splitter)
             self.rightPanel = Panel(self.splitter)
-            self.splitter.SplitVertically(self.leftPanel, self.rightPanel, self.GetSize()[0] / 5 * 3)
+            self.splitter.SplitVertically(self.leftPanel, self.rightPanel, self.GetSize()[0] / 2)
             self.splitter.SetMinimumPaneSize(self.GetSize()[0] / 10)
         elif kind == "split-h":
             self.splitter = SplitterWindow(self, style=SP_3DSASH)
             self.topPanel = Panel(self.splitter)
             self.bottomPanel = Panel(self.splitter)
-            self.splitter.SplitHorizontally(self.topPanel, self.bottomPanel, self.GetSize()[1] / 5 * 3)
+            self.splitter.SplitHorizontally(self.topPanel, self.bottomPanel, self.GetSize()[1] / 2)
             self.splitter.SetMinimumPaneSize(self.GetSize()[1] / 10)
 
         icon = Icon(r"Resource\Icon.png", BITMAP_TYPE_PNG)

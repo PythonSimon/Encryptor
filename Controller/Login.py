@@ -29,7 +29,7 @@ class LoginFrame(BaseFrame):
         nameText = StaticText(self.panel, label="真实姓名")
         nameCtrl = TextCtrl(self.panel)
         passwordText = StaticText(self.panel, label="密码")
-        passwordCtrl = TextCtrl(self.panel)
+        passwordCtrl = TextCtrl(self.panel, style=TE_PASSWORD)
 
         cancel = Button(self.panel, id=CANCEL, label="取消")
         enter = Button(self.panel, id=ENTER, label="进入")
