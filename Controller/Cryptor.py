@@ -49,9 +49,9 @@ class CryptorFrame(BaseFrame):
 
         title.SetFont(fontStyle(25))
         inputText.SetFont(fontStyle(15))
-        inputCtrl.SetFont(fontStyle(13))
+        inputCtrl.SetFont(fontStyle(12))
         outputText.SetFont(fontStyle(15))
-        outputCtrl.SetFont(fontStyle(13))
+        outputCtrl.SetFont(fontStyle(12))
         encryptButton.SetFont(fontStyle(19))
 
         sizer.Add(title, 0, flag=ALIGN_CENTER, border=10)
@@ -89,9 +89,9 @@ class CryptorFrame(BaseFrame):
 
         title.SetFont(fontStyle(25))
         inputText.SetFont(fontStyle(15))
-        inputCtrl.SetFont(fontStyle(13))
+        inputCtrl.SetFont(fontStyle(12))
         outputText.SetFont(fontStyle(15))
-        outputCtrl.SetFont(fontStyle(13))
+        outputCtrl.SetFont(fontStyle(12))
         encryptButton.SetFont(fontStyle(19))
 
         sizer.Add(title, 0, flag=ALIGN_CENTER, border=10)
