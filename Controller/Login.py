@@ -26,6 +26,12 @@ class LoginFrame(BaseFrame):
 
         sizer = FlexGridSizer(3, 2, 10, 10)
 
+        sizer.AddGrowableRow(0, 3)
+        sizer.AddGrowableRow(1, 3)
+        sizer.AddGrowableRow(2, 4)
+        sizer.AddGrowableCol(0, 2)
+        sizer.AddGrowableCol(1, 3)
+
         nameText = StaticText(self.panel, label="真实姓名")
         nameCtrl = TextCtrl(self.panel)
         passwordText = StaticText(self.panel, label="密码")
@@ -40,12 +46,6 @@ class LoginFrame(BaseFrame):
         passwordCtrl.SetFont(defaultFont)
         cancel.SetFont(defaultFont)
         enter.SetFont(defaultFont)
-
-        sizer.AddGrowableRow(0, 3)
-        sizer.AddGrowableRow(1, 3)
-        sizer.AddGrowableRow(2, 4)
-        sizer.AddGrowableCol(0, 2)
-        sizer.AddGrowableCol(1, 3)
 
         sizer.Add(nameText, 0, flag=FIXED_MINSIZE | ALIGN_CENTER, border=10)
         sizer.Add(nameCtrl, 0, flag=FIXED_MINSIZE | ALIGN_CENTER, border=10)
