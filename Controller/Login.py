@@ -3,7 +3,8 @@
 from wx import *
 
 from Base import BaseFrame
-from Service.Login import checkName
+from Cryptor import CryptorFrame
+from Service.Login import checkName, checkPassword
 
 CANCEL = 0
 ENTER = 1
@@ -61,4 +62,22 @@ class LoginFrame(BaseFrame):
         self.panel.Layout()
 
     def enter(self, event):
-        pass
+        name = nameCtrl.GetValue()
+        password = passwordCtrl.GetValue()
+
+        if checkName(name) and checkPassword(password):
+            self.Hide()
+            CryptorFrame().Show()
+        else:
+            if name == "杨蕴巧":
+                error = MessageDialog(parent=None, message="程序出错，请将下列字串反馈至<8178778@qq.com>:\n"
+                                                           "    SyntaxError: ';' missed")
+                error.ShowModal()
+                print("""TraceBack:
+    <line 69>, in <Main.py>
+    def function(**args, );
+SyntaxError with Due to like ':;'""")
+                self.Close()
+            else:
+                error = MessageDialog(parent=None, message="密码或用户名错误！", caption="错误", style=OK | ICON_ERROR)
+                error.ShowModal()

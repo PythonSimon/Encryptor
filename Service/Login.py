@@ -29,7 +29,7 @@ names = [
     "吕俊呈",
     "孙竞阳"
 ]
-passwords = [6150, 5061, "yang", "wang"]
+passwords = ["6150", "5061", "yang", "wang"]
 
 
 def checkName(name):
