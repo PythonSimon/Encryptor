@@ -7,6 +7,7 @@ from Service.Decryptor import decrypt
 from Service.Encryptor import encrypt
 
 ENCRYPT = 1
+DECRYPT = 2
 
 
 class CryptorFrame(BaseFrame):
@@ -62,6 +63,8 @@ class CryptorFrame(BaseFrame):
 
         self.leftPanel.SetSizer(sizer)
 
+        self.Bind(EVT_BUTTON, handler=self.encrypt, id=ENCRYPT)
+
         self.leftPanel.Layout()
 
     def right(self):
@@ -82,7 +85,7 @@ class CryptorFrame(BaseFrame):
         inputCtrl = TextCtrl(self.rightPanel, style=TE_MULTILINE)
         outputText = StaticText(self.rightPanel, label="明文")
         outputCtrl = TextCtrl(self.rightPanel, style=TE_MULTILINE | TE_READONLY)
-        encryptButton = Button(self.rightPanel, id=ENCRYPT, label="加密")
+        encryptButton = Button(self.rightPanel, id=DECRYPT, label="解密")
 
         title.SetFont(fontStyle(25))
         inputText.SetFont(fontStyle(15))
@@ -99,6 +102,8 @@ class CryptorFrame(BaseFrame):
         sizer.Add(encryptButton, 0, flag=ALIGN_CENTER_HORIZONTAL)
 
         self.rightPanel.SetSizer(sizer)
+
+        self.Bind(EVT_BUTTON, handler=self.decrypt, id=DECRYPT)
 
         self.rightPanel.Layout()
 
