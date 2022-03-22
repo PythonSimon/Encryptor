@@ -7,7 +7,7 @@ from wx import *
 
 class BaseFrame(Frame):
 
-    def __init__(self, size, title, closingWarning="确认关闭？", kind="default", panels=None, backgroundColor="GREY"):
+    def __init__(self, size, title, closingWarning="确认关闭？", kind="default", backgroundColor="GREY"):
         super(BaseFrame, self).__init__(parent=None, title=title, size=size, style=DEFAULT_FRAME_STYLE ^ MAXIMIZE_BOX)
 
         self.closingWarning = closingWarning
@@ -17,14 +17,14 @@ class BaseFrame(Frame):
             self.panel = Panel(parent=self)
         elif kind == "split-v":
             self.splitter = SplitterWindow(self, style=SP_3DSASH)
-            self.leftPanel = panels[0]
-            self.rightPanel = panels[1]
+            self.leftPanel = Panel(self.splitter)
+            self.rightPanel = Panel(self.splitter)
             self.splitter.SplitVertically(self.leftPanel, self.rightPanel, self.GetSize()[0] / 5 * 3)
             self.splitter.SetMinimumPaneSize(self.GetSize()[0] / 10)
         elif kind == "split-h":
             self.splitter = SplitterWindow(self, style=SP_3DSASH)
-            self.topPanel = panels[0]
-            self.bottomPanel = panels[1]
+            self.topPanel = Panel(self.splitter)
+            self.bottomPanel = Panel(self.splitter)
             self.splitter.SplitHorizontally(self.topPanel, self.bottomPanel, self.GetSize()[1] / 5 * 3)
             self.splitter.SetMinimumPaneSize(self.GetSize()[1] / 10)
 

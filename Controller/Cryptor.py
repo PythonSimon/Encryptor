@@ -10,4 +10,15 @@ from Service.Encryptor import encrypt
 class CryptorFrame(BaseFrame):
     
     def __init__(self):
-        super(CryptorFrame, self).__init__((1000, 710), "身份验证", backgroundColor="AQUAMARINE")
+        super(CryptorFrame, self).__init__(
+            (1000, 710),
+            "加密工具",
+            closingWarning="确定退出聊天加密工具？",
+            kind="split-v",
+            backgroundColor="AQUAMARINE"
+        )
+
+        self.main()
+
+    def main(self):
+        pass

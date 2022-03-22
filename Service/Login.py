@@ -28,8 +28,11 @@ names = [
     "董延诚",
     "吕俊呈",
     "孙竞阳"
+
+    , ""  # FIXME 完成后删除
 ]
-passwords = ["6150", "5061", "yang", "wang"]
+passwords = ["6150", "5061", "yang", "wang"
+             , ""]  # FIXME 完成后删除
 
 
 def checkName(name):
