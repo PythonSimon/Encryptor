@@ -28,6 +28,8 @@ class CryptorFrame(BaseFrame):
         self.right()
 
     def left(self):
+        global inputCtrlL, outputCtrlL
+
         fontStyle = lambda size: Font(size, SCRIPT, NORMAL, NORMAL, False)
 
         sizer = FlexGridSizer(6, 1, 0, 0)
@@ -42,23 +44,23 @@ class CryptorFrame(BaseFrame):
 
         title = StaticText(self.leftPanel, label="加密器")
         inputText = StaticText(self.leftPanel, label="明文")
-        inputCtrl = TextCtrl(self.leftPanel, style=TE_MULTILINE)
+        inputCtrlL = TextCtrl(self.leftPanel, style=TE_MULTILINE)
         outputText = StaticText(self.leftPanel, label="密文")
-        outputCtrl = TextCtrl(self.leftPanel, style=TE_MULTILINE | TE_READONLY)
+        outputCtrlL = TextCtrl(self.leftPanel, style=TE_MULTILINE | TE_READONLY)
         encryptButton = Button(self.leftPanel, id=ENCRYPT, label="加密")
 
         title.SetFont(fontStyle(25))
         inputText.SetFont(fontStyle(15))
-        inputCtrl.SetFont(fontStyle(12))
+        inputCtrlL.SetFont(fontStyle(12))
         outputText.SetFont(fontStyle(15))
-        outputCtrl.SetFont(fontStyle(12))
+        outputCtrlL.SetFont(fontStyle(12))
         encryptButton.SetFont(fontStyle(19))
 
         sizer.Add(title, 0, flag=ALIGN_CENTER, border=10)
         sizer.Add(inputText, 0, flag=ALIGN_CENTER)
-        sizer.Add(inputCtrl, 0, flag=ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(inputCtrlL, 0, flag=ALIGN_CENTER_HORIZONTAL)
         sizer.Add(outputText, 0, flag=ALIGN_CENTER)
-        sizer.Add(outputCtrl, 0, flag=ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(outputCtrlL, 0, flag=ALIGN_CENTER_HORIZONTAL)
         sizer.Add(encryptButton, 0, flag=ALIGN_CENTER_HORIZONTAL)
 
         self.leftPanel.SetSizer(sizer)
@@ -68,6 +70,8 @@ class CryptorFrame(BaseFrame):
         self.leftPanel.Layout()
 
     def right(self):
+        global inputCtrlR, outputCtrlR
+
         fontStyle = lambda size: Font(size, SCRIPT, NORMAL, NORMAL, False)
 
         sizer = FlexGridSizer(6, 1, 0, 0)
@@ -82,23 +86,23 @@ class CryptorFrame(BaseFrame):
 
         title = StaticText(self.rightPanel, label="解密器")
         inputText = StaticText(self.rightPanel, label="密文")
-        inputCtrl = TextCtrl(self.rightPanel, style=TE_MULTILINE)
+        inputCtrlR = TextCtrl(self.rightPanel, style=TE_MULTILINE)
         outputText = StaticText(self.rightPanel, label="明文")
-        outputCtrl = TextCtrl(self.rightPanel, style=TE_MULTILINE | TE_READONLY)
+        outputCtrlR = TextCtrl(self.rightPanel, style=TE_MULTILINE | TE_READONLY)
         encryptButton = Button(self.rightPanel, id=DECRYPT, label="解密")
 
         title.SetFont(fontStyle(25))
         inputText.SetFont(fontStyle(15))
-        inputCtrl.SetFont(fontStyle(12))
+        inputCtrlR.SetFont(fontStyle(12))
         outputText.SetFont(fontStyle(15))
-        outputCtrl.SetFont(fontStyle(12))
+        outputCtrlR.SetFont(fontStyle(12))
         encryptButton.SetFont(fontStyle(19))
 
         sizer.Add(title, 0, flag=ALIGN_CENTER, border=10)
         sizer.Add(inputText, 0, flag=ALIGN_CENTER)
-        sizer.Add(inputCtrl, 0, flag=ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(inputCtrlR, 0, flag=ALIGN_CENTER_HORIZONTAL)
         sizer.Add(outputText, 0, flag=ALIGN_CENTER)
-        sizer.Add(outputCtrl, 0, flag=ALIGN_CENTER_HORIZONTAL)
+        sizer.Add(outputCtrlR, 0, flag=ALIGN_CENTER_HORIZONTAL)
         sizer.Add(encryptButton, 0, flag=ALIGN_CENTER_HORIZONTAL)
 
         self.rightPanel.SetSizer(sizer)
@@ -108,7 +112,11 @@ class CryptorFrame(BaseFrame):
         self.rightPanel.Layout()
 
     def encrypt(self, event):
-        pass
+        plaintext = inputCtrlL.GetValue()
+        ciphertext = encrypt(plaintext)
+        outputCtrlL.SetValue(ciphertext)
 
     def decrypt(self, event):
-        pass
+        ciphertext = inputCtrlR.GetValue()
+        plaintext = decrypt(ciphertext)
+        outputCtrlR.SetValue(plaintext)
