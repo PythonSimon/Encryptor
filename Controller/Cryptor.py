@@ -2,7 +2,7 @@
 
 from wx import *
 
-from Base import BaseFrame
+from Controller.Base import BaseFrame
 from Service.Decryptor import decrypt
 from Service.Encryptor import encrypt
 

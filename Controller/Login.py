@@ -2,9 +2,9 @@
 
 from wx import *
 
-from Base import BaseFrame
+from Controller.Base import BaseFrame
 from Cryptor import CryptorFrame
-from Service.Login import checkName, checkPassword
+from Service.LoginChecker import checkName, checkPassword
 
 CANCEL = 0
 ENTER = 1
