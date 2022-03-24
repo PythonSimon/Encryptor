@@ -1,5 +1,7 @@
 # coding=utf-8
 
+import pyperclip
+
 from wx import *
 
 from Controller.Base import BaseFrame
@@ -47,7 +49,7 @@ class CryptorFrame(BaseFrame):
         inputCtrlL = TextCtrl(self.leftPanel, style=TE_MULTILINE)
         outputText = StaticText(self.leftPanel, label="密文")
         outputCtrlL = TextCtrl(self.leftPanel, style=TE_MULTILINE | TE_READONLY)
-        encryptButton = Button(self.leftPanel, id=ENCRYPT, label="加密")
+        encryptButton = Button(self.leftPanel, id=ENCRYPT, label="加密并复制")
 
         title.SetFont(fontStyle(25))
         inputText.SetFont(fontStyle(15))
@@ -89,7 +91,7 @@ class CryptorFrame(BaseFrame):
         inputCtrlR = TextCtrl(self.rightPanel, style=TE_MULTILINE)
         outputText = StaticText(self.rightPanel, label="明文")
         outputCtrlR = TextCtrl(self.rightPanel, style=TE_MULTILINE | TE_READONLY)
-        encryptButton = Button(self.rightPanel, id=DECRYPT, label="解密")
+        encryptButton = Button(self.rightPanel, id=DECRYPT, label="粘贴并解密")
 
         title.SetFont(fontStyle(25))
         inputText.SetFont(fontStyle(15))
@@ -115,8 +117,18 @@ class CryptorFrame(BaseFrame):
         plaintext = inputCtrlL.GetValue()
         ciphertext = encrypt(plaintext)
         outputCtrlL.SetValue(ciphertext)
+        pyperclip.copy(ciphertext)
 
     def decrypt(self, event):
-        ciphertext = inputCtrlR.GetValue()
-        plaintext = decrypt(ciphertext)
-        outputCtrlR.SetValue(plaintext)
+        # ciphertext = inputCtrlR.GetValue()
+        ciphertext = pyperclip.paste()
+        inputCtrlR.SetValue(ciphertext)
+
+        try:
+            plaintext = decrypt(ciphertext)
+            outputCtrlR.SetValue(plaintext)
+        except (IndexError, KeyError):
+            outputCtrlR.SetValue("由于输入的密文不符合规范，无法进行解密！")
+            outputCtrlR.SetForegroundColour("RED")
+        else:
+            outputCtrlR.SetForegroundColour("BLACK")
